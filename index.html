@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/pageLogin.css">
+    <link rel="stylesheet" href="./styles/pageRegister.css">
     <title>Login</title>
 </head>
 
@@ -16,29 +17,37 @@
         <a id="btn-register" class="opcoes" href="#">Register</a>
     </div>
 
-    <form id="formularioLogin">
-        <input placeholder="Email" type="email">
-        <input placeholder="Password" type="password">
-        <button>Login</button>
+    <form id="formularioLogin" class="formularioLoginAndRegister">
+        <input class="loginAndRegisterBox" placeholder="Email" type="email">
+        <input class="loginAndRegisterBox" placeholder="Password" type="password">
+        <button class="btnLoginAndRegister">Log in</button>
     </form>
 
-    <form style="display: none;">
-        <input type="email">
-        <input type="password">
-        <input type="password">
-        <input type="date">
+    <form id="formularioRegister" class="formularioLoginAndRegister">
+        <input id="nameRegister" class="loginAndRegisterBox" placeholder="Name" type="text">
+        <input id="emailRegister" class="loginAndRegisterBox" placeholder="Email" type="email">
+        <input id="passwordRegister" class="loginAndRegisterBox" placeholder="Password" type="password">
+        <input id="passwordRegisterConfirm" class="loginAndRegisterBox" placeholder="Password" type="password">
 
-        <select>
-            <option>Heterosseuxal</option>
-            <option>Homossexual</option>
-            <option>Mulher Homossexual</option>
-            <option>Bissexual</option>
-            <option>Transsexual</option>
-            <option>Outros</option>
-        </select>
+        <div id="boxGeneroAndData">
+            <div class="boxData">
+                <span>Aniversario</span>
+                <input id="data" type="date">
+            </div>
 
-        <button>Login</button>
+            <div class="boxGenero">
+                <span>Gênero</span>
+                <select id="genero">
+                    <option>Cisgênero</option>
+                    <option>Transgênero</option>
+                    <option>Não-binário</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" id="btn-createRegister" class="btnLoginAndRegister">Log</button>
     </form>
+    <script src="./script/pageLoginRegister.js"></script>
+    <script src="./script/register.js"></script>
 </body>
 
 </html>
