@@ -2,9 +2,9 @@
 // REQUISITOS/FORMULARIO DE CRIAÇÃO DE CONTA
 const nomeRegister = document.getElementById("nameRegister")
 const emailRegister = document.getElementById("emailRegister")
-const passwordRegister = document.getElementById("nameRegister")
+const passwordRegister = document.getElementById("passwordRegister")
 const passwordRegisterConfirm = document.getElementById("passwordRegisterConfirm")
-const AniversarioRegister = document.getElementById("data")
+const aniversarioRegister = document.getElementById("data")
 const generoRegister = document.getElementById("genero")
 // REQUISITOS/FORMULARIO DE CRIAÇÃO DE CONTA
 
@@ -12,26 +12,43 @@ const generoRegister = document.getElementById("genero")
 
 // BOTÃO USADO PARA CRIAR A CONTA
 const botaoCreateConfirm = document.getElementById("btn-createRegister")
- 
-const account = [{
-    name: 'Samuel Rosário',
-    email: 'teste@teste.com',
-    password: 'teste123',
-    birthday: 09102203,
-    gender: 'Cisgênero'
-}, {
-    name: 'Samuel Nego',
-    email: 'teste@testão.com',
-    password: 'teste123',
-    birthday: 09102203,
-    gender: 'Cisgênero'
-}]
 
-botaoCreateConfirm.addEventListener('click', () =>{
-    account.map((account, position) => {
-        if (account.name === 'Samuel Nego') {
-            return console.log(account)
+
+botaoCreateConfirm.addEventListener('click', () => {
+    const account = [{
+        name: nomeRegister.value,
+        email: emailRegister.value,
+        password: passwordRegister.value,
+        passwordConfirm: passwordRegisterConfirm.value,
+        birthday: aniversarioRegister.value,
+        gender: generoRegister.value,
+        id: sessionStorage.length
+    }]
+
+    account.map((newAccounts) => {
+
+        sessionStorage.setItem(newAccounts.id, JSON.stringify(newAccounts))
+        const getAccounts = sessionStorage.getItem(newAccounts.id)
+        const accountsConfig = JSON.parse(getAccounts)
+
+        switch (accountsConfig.name !== nomeRegister.value) {
+            case (true):
+                console.log('são diferentes');
+                break;
+
+            case (false):
+                console.log(accountsConfig.name !== nomeRegister.value);
+                console.log(accountsConfig.name);
+                console.log(nomeRegister.value);
+                break;
         }
-    
+
+
+
+
     })
+
 })
+
+
+
