@@ -16,37 +16,59 @@ const botaoCreateConfirm = document.getElementById("btn-createRegister")
 
 botaoCreateConfirm.addEventListener('click', () => {
     const account = [{
-        name: nomeRegister.value,
-        email: emailRegister.value,
-        password: passwordRegister.value,
-        passwordConfirm: passwordRegisterConfirm.value,
-        birthday: aniversarioRegister.value,
-        gender: generoRegister.value,
-        id: sessionStorage.length
+        person: {
+            name: nomeRegister.value,
+            email: emailRegister.value,
+            password: passwordRegister.value,
+            passwordConfirm: passwordRegisterConfirm.value,
+            birthday: aniversarioRegister.value,
+            gender: generoRegister.value,
+            id: sessionStorage.length
+        }
     }]
 
-    account.map((newAccounts) => {
+    account.map((allAccounts, quantidade) => {
 
-        sessionStorage.setItem(newAccounts.id, JSON.stringify(newAccounts))
-        const getAccounts = sessionStorage.getItem(newAccounts.id)
+        sessionStorage.setItem(allAccounts.person.id, JSON.stringify(allAccounts));
+        const getAccounts = sessionStorage.getItem(allAccounts.person.id)
         const accountsConfig = JSON.parse(getAccounts)
+        
 
-        switch (accountsConfig.name !== nomeRegister.value) {
-            case (true):
-                console.log('são diferentes');
-                break;
+        for (const x in accountsConfig) {
+            if (accountsConfig.hasOwnProperty.call(accountsConfig, x)) {
+                const newAccounts = {
+                    name: accountsConfig.person.name,
+                    email: accountsConfig.person.email,
+                    password: accountsConfig.person.password,
+                    passwordConfirm: accountsConfig.person.passwordConfirm,
+                    birthday: accountsConfig.person.birthday,
+                    gender: accountsConfig.person.gender,
+                    id: accountsConfig.person.id
+                }
+// Tentando resolver
+              //  sessionStorage.setItem('newAccounts', JSON.stringify(newAccounts))
+              //  const allNewAccountsInfo = sessionStorage.getItem('newAccounts')
+              //  const compactObject = JSON.parse(allNewAccountsInfo)
+              //  console.log(compactObject);
+// Tentando Resolver
+                if (newAccounts.name !== nomeRegister.value) {
+                    console.log('nome aprovado');
 
-            case (false):
-                console.log(accountsConfig.name !== nomeRegister.value);
-                console.log(accountsConfig.name);
-                console.log(nomeRegister.value);
-                break;
+
+                }else if(newAccounts.name === allAccounts.person.name){
+                    console.log('esse nome já existe ');
+                    console.log(newAccounts.name);
+
+                }
+            }
         }
 
 
-
-
     })
+
+
+
+
 
 })
 
