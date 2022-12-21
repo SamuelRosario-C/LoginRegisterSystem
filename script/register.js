@@ -13,6 +13,7 @@ const generoRegister = document.getElementById("genero")
 // BOTÃO USADO PARA CRIAR A CONTA
 const botaoCreateConfirm = document.getElementById("btn-createRegister")
 
+// conta do administrador
 
 botaoCreateConfirm.addEventListener('click', () => {
     const account = [{
@@ -26,49 +27,43 @@ botaoCreateConfirm.addEventListener('click', () => {
             id: sessionStorage.length
         }
     }]
+    // conta do Administrador
+
 
     account.map((allAccounts, quantidade) => {
 
-        sessionStorage.setItem(allAccounts.person.id, JSON.stringify(allAccounts));
-        const getAccounts = sessionStorage.getItem(allAccounts.person.id)
-        const accountsConfig = JSON.parse(getAccounts)
-        
+        function criadorDeCotnas() {
 
-        for (const x in accountsConfig) {
-            if (accountsConfig.hasOwnProperty.call(accountsConfig, x)) {
-                const newAccounts = {
-                    name: accountsConfig.person.name,
-                    email: accountsConfig.person.email,
-                    password: accountsConfig.person.password,
-                    passwordConfirm: accountsConfig.person.passwordConfirm,
-                    birthday: accountsConfig.person.birthday,
-                    gender: accountsConfig.person.gender,
-                    id: accountsConfig.person.id
-                }
-// Tentando resolver
-              //  sessionStorage.setItem('newAccounts', JSON.stringify(newAccounts))
-              //  const allNewAccountsInfo = sessionStorage.getItem('newAccounts')
-              //  const compactObject = JSON.parse(allNewAccountsInfo)
-              //  console.log(compactObject);
-// Tentando Resolver
-                if (newAccounts.name !== nomeRegister.value) {
-                    console.log('nome aprovado');
-
-
-                }else if(newAccounts.name === allAccounts.person.name){
-                    console.log('esse nome já existe ');
-                    console.log(newAccounts.name);
-
-                }
-            }
+            // ESSA EXPRESSÃO ADICIONA ITENS AO STORAGE
+            sessionStorage.setItem(allAccounts.person.id, JSON.stringify(allAccounts));
+            const getAccounts = sessionStorage.getItem(allAccounts.person.id)
+            JSON.parse(getAccounts)
+            // ESSA EXPRESSÃO ADICIONA ITENS AO STORAGE
         }
 
+        sessionStorage.getItem(sessionStorage.length, JSON.stringify(sessionStorage));
+        const pegaContaStorage = sessionStorage.getItem(sessionStorage)
+        JSON.parse(pegaContaStorage)
+
+        for (let i = 0; i < sessionStorage.length; i++) {
+            const allAccounts = JSON.parse(sessionStorage.getItem(i))
+
+            for (const x in allAccounts) {
+                const allAccountsConfig = allAccounts[x];
+
+                // colocar switch case quando
+                console.log('o nome que você escolheu já existe, ele não foi atribuido nos dados');
+                console.log('os nomes são diferentes o seu nome foi atribuido nos dados');
+                criadorDeCotnas()
+                // colocar switch case quando
+
+            }
+        }
+        // EXPRESSÃO PARA PEGAR INFORMAÇÕES
+
+        // EXPRESSÃO PARA PEGAR INFORMAÇÕES
 
     })
-
-
-
-
 
 })
 

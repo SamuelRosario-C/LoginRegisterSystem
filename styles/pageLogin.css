@@ -72,3 +72,7 @@ font-size: 1rem;
     font-size: calc(.3vw + 14px);
 
 }
+
+.btnLoginAndRegister:active{
+    background-color: #fffb00;
+}
